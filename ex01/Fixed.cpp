@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 09:19:43 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/18 09:23:03 by ahraich          ###   ########.fr       */
+/*   Created: 2024/12/18 09:20:23 by ahraich           #+#    #+#             */
+/*   Updated: 2024/12/18 09:22:33 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
-
 
 // copy constructor 
 Fixed::Fixed(const Fixed &other) { 

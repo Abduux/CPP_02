@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.h                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 05:02:03 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/18 09:19:40 by ahraich          ###   ########.fr       */
+/*   Created: 2024/12/18 05:08:04 by ahraich           #+#    #+#             */
+/*   Updated: 2024/12/18 05:18:22 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-#define FIXED_H
+#include "Fixed.h"
 
-#include <iostream>
-
-class Fixed
+int main( void ) 
 {
-    private:
-        /* data */
-        int value;
-        static const int fractional_bits = 8;
-    public:
-        Fixed(/* args */);
-        Fixed(const Fixed &other);
-        Fixed& operator=(const Fixed &other);
-        ~Fixed();
+    Fixed a;
+    Fixed b( a );
+    Fixed c;
 
-        int getRawBits( void ) const;
-        void setRawBits( int const raw );
-};
-
-#endif
+    c = b;
+    
+    std::cout << a.getRawBits() << std::endl;
+    std::cout << b.getRawBits() << std::endl;
+    std::cout << c.getRawBits() << std::endl;
+    return 0;
+}
