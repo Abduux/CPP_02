@@ -6,7 +6,7 @@
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:20:23 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/19 21:52:35 by ahraich          ###   ########.fr       */
+/*   Updated: 2024/12/19 22:06:57 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Fixed::Fixed(float float_point_value)  // convert the float-point value to the f
 {
     std::cout << "Float constructor called" << std::endl;
 
-    this->value = (int)roundf(float_point_value * (1 << this->fractional_bits));
+    this->value =static_cast<int>(roundf(float_point_value * (1 << this->fractional_bits)));
 }
 
 
@@ -81,7 +81,7 @@ int Fixed::toInt() const
 
 float Fixed::toFloat() const 
 {
-    float converted = (float)this->value / (1 << this->fractional_bits);
+    float converted = static_cast<float>(this->value) / (1 << this->fractional_bits);
     return converted;
 }
 
