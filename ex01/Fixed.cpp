@@ -16,7 +16,7 @@
 Fixed::Fixed(const Fixed &other) { 
     std::cout << "Copy constructor called" << std::endl;
 
-    
+    *this = other;
     //this->value = other.getRawBits();
 } 
 
@@ -25,9 +25,8 @@ Fixed::Fixed(const Fixed &other) {
 Fixed& Fixed::operator=(const Fixed& other) 
 {
     std::cout << "Copy assignment operator called " << std::endl;
-    
-    
-    this->value = other.getRawBits();
+    if(this != &other)
+        this->value = other.getRawBits();
     return *this;
 }
 
@@ -37,11 +36,13 @@ Fixed::Fixed(/* args */) : value(0){
     std::cout << "Default constructor called" << std::endl;
 }
 
+//Int constructor
 Fixed::Fixed(const int int_value) : value(int_value << this->fractional_bits) // convert the int value to the fixed point representation 
 {
     std::cout << "Int constructor called" << std::endl;
 }
 
+//Float constructor
 Fixed::Fixed(float float_point_value)  // convert the float-point value to the fixed point representation 
 {
     std::cout << "Float constructor called" << std::endl;
@@ -53,14 +54,14 @@ Fixed::Fixed(float float_point_value)  // convert the float-point value to the f
 // Default Destructor
 Fixed::~Fixed()
 {
-    std::cout << "Destructor Called !" << std::endl;
+    std::cout << "Destructor Called" << std::endl;
 }
 
 
 // get Rawbits
 int Fixed::getRawBits() const 
 {
-    std::cout << "getRawBits member function called" << std::endl;
+    // std::cout << "getRawBits member function called" << std::endl;
     return value;
 }
 
@@ -80,7 +81,9 @@ int Fixed::toInt() const
 
 float Fixed::toFloat() const 
 {
-    return (float)(this->value / (1 << this->fractional_bits));
+    float converted = (float)this->value) / (1 << this->fractional_bits);
+    // std::cout << "value : " << 
+    return converted;
 }
 
 
@@ -89,9 +92,4 @@ std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
     out << fixed.toFloat();  // insert the float to the stream
     return out;  // return the stream
 }
-
-
-// this->value = (int)roundf(float_point_value * (1 << this->fractional_bits));
-
-// when we turned float to fixed point we did fixed_value=round(f×2 
 
