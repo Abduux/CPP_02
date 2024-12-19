@@ -21,13 +21,13 @@ class Fixed
     private:
         /* data */
         int value;
-        static const int fractional_bits = 8;
+        static const int fractional_bits = 12;
     public:
-        Fixed(/* args */);
-        Fixed(const int int_value);
-        Fixed(float float_value);
-        Fixed(const Fixed &other);
-        Fixed& operator=(const Fixed &other);
+        Fixed(/* args */); // default
+        Fixed(const int int_value); // int constructor 
+        Fixed(float float_value); // float constructor
+        Fixed(const Fixed &other); // copy constructer 
+        Fixed& operator=(const Fixed &other); // copy assignment operator overload
         ~Fixed();
 
         
@@ -36,6 +36,7 @@ class Fixed
         float toFloat(void) const;
         int toInt(void) const;
 
+        //• The 6 comparison operators
         bool operator>(const Fixed &rhs) const;
         bool operator<(const Fixed &rhs) const;
         bool operator>=(const Fixed &rhs) const;
@@ -43,17 +44,55 @@ class Fixed
         bool operator==(const Fixed &rhs) const;
         bool operator!=(const Fixed &rhs) const;
 
+        //• The 4 arithmetic operators:
+            // Fixed operator+(const Fixed &rhs) const;
+            // Fixed operator-(const Fixed &rhs) const;
+            // Fixed operator/(const Fixed &rhs) const;
+            // Fixed operator*(const Fixed &rhs) const;
+
+
+        //The 4 increment/decrement operators
+            // Fixed operator++(int);
+            // Fixed operator++();
+            // Fixed operator--(int);
+            // Fixed operator--();
+
+        //The min & max member functions 
+            // static Fixed& min(Fixed &f1, Fixed &f2);
+            // static Fixed& min(const Fixed &f1,const Fixed &f2);
+            // static Fixed& max(Fixed &f1, Fixed &f2);
+            // static Fixed& max(const Fixed &f1,const Fixed &f2);
+
 };
-
-
-bool Fixed::operator>(const Fixed &rhs) const
-{
-}
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 
-#endif
+//The 6 comparison operators
 
+
+//• The 6 comparison operators
+
+// Fixed Fixed::operator+(const Fixed &rhs) const
+// {
+//     return true;
+// }
+
+// Fixed Fixed::operator-(const Fixed &rhs) const
+// {
+//     return true;
+// }
+
+// Fixed Fixed::operator/(const Fixed &rhs) const
+// {
+//     return true;
+// }
+
+// Fixed Fixed::operator*(const Fixed &rhs) const
+// {
+//     return true;
+// }
+
+#endif
 
 /*
 The 6 comparison operators: >, <, >=, <=, == and !=.

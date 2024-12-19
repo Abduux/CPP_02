@@ -81,15 +81,45 @@ int Fixed::toInt() const
 
 float Fixed::toFloat() const 
 {
-    float converted = (float)this->value / (1 << this->fractional_bits);
-    // std::cout << "value : " << 
-    return converted;
+    return (float)this->value / (1 << this->fractional_bits);
 }
 
 
-std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
+std::ostream& operator<<(std::ostream& outStream, const Fixed& fixed)
 {
-    out << fixed.toFloat();  // insert the float to the stream
-    return out;  // return the stream
+    outStream << fixed.toFloat();  // insert the float to the stream
+    return outStream;  // return the stream
 }
 
+
+// operators overload ----------------------------------
+
+bool Fixed::operator>(const Fixed &rhs) const
+{
+    return (this->value > rhs.value);
+}
+
+bool Fixed::operator<(const Fixed &rhs) const 
+{
+    return (this->value < rhs.value);
+}
+
+bool Fixed::operator>=(const Fixed &rhs) const
+{
+    return (this->value >= rhs.value);
+}
+
+bool Fixed::operator<=(const Fixed &rhs) const
+{
+    return (this->value <= rhs.value);
+}
+
+bool Fixed::operator==(const Fixed &rhs) const
+{
+    return (this->value == rhs.value);
+}
+
+bool Fixed::operator!=(const Fixed &rhs) const
+{
+    return (this->value != rhs.value);
+}
