@@ -6,120 +6,107 @@
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 05:08:04 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/19 12:51:56 by ahraich          ###   ########.fr       */
+/*   Updated: 2024/12/19 21:47:37 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
 
-// int main( void )
-// {
-//     // const Fixed a = 15.1112f;
-//     // const Fixed b = 11.1111f;
-//     // std::cout << "min is : " << Fixed::min(a , b) << std::endl;
-//     // std::cout << "max is : " << Fixed::max(a , b) << std::endl;
+// int main() {
+//     Fixed a(42);              // Integer constructor
+//     Fixed b(42.42f);          // Float constructor
+//     Fixed c;                  // Default constructor
 
-//     Fixed a(4.5f);
-//     Fixed b(9.0f);
+//     // Expected Results
+//     // Default constructor: 0
+//     // Integer constructor: 42
+//     // Float constructor: ~42.42 (precision may vary)
 
+//     std::cout << "Default constructor: " << c << std::endl; // Expected: 0
+//     std::cout << "Integer constructor: " << a << std::endl; // Expected: 42
+//     std::cout << "Float constructor: " << b << std::endl;   // Expected: ~42.42
 
-//     std::cout << "a = " << a << std::endl;
-//     std::cout << "b = " << b << std::endl;
+//     // Test toInt() and toFloat()
+//     std::cout << "a.toInt(): " << a.toInt() << std::endl;       // Expected: 42
+//     std::cout << "b.toFloat(): " << b.toFloat() << std::endl;   // Expected: ~42.42
 
-//     std::cout << "a + b = " << a + b<<std::endl;
-//     std::cout << "a - b = " << a - b<<std::endl;
-//     std::cout << "a * b = " << a * b << std::endl;
-//     std::cout << "a / b = " << a / b << std::endl;
+//     return 0;
+// }
+
+// int main() {
+//     Fixed a(10.5f);    // Float constructor
+//     Fixed b(2);        // Integer constructor
+
+//     // Addition
+//     Fixed sum = a + b;
+//     std::cout << "Addition: " << a << " + " << b << " = " << sum << std::endl; // Expected: 10.5 + 2 = 12.5
+
+//     // Subtraction
+//     Fixed diff = a - b;
+//     std::cout << "Subtraction: " << a << " - " << b << " = " << diff << std::endl; // Expected: 10.5 - 2 = 8.5
+
+//     // Multiplication
+//     Fixed product = a * b;
+//     std::cout << "Multiplication: " << a << " * " << b << " = " << product << std::endl; // Expected: 10.5 * 2 = 21.0
+
+//     // Division
+//     Fixed quotient = a / b;
+//     std::cout << "Division: " << a << " / " << b << " = " << quotient << std::endl; // Expected: 10.5 / 2 = 5.25
+
+//     return 0;
+// }
+
+// int main() {
+//     Fixed a(10.5f); // Float constructor
+//     Fixed b(2);     // Integer constructor
+//     Fixed c(10.5f); // Same value as `a`
+
+//     std::cout << std::boolalpha; // Print boolean values as true/false
+
+//     // Expected Results
+//     // a > b: true
+//     // a < b: false
+//     // a >= c: true
+//     // a <= c: true
+//     // a == c: true
+//     // a != b: true
+
+//     std::cout << "a =" << a << " , b=" << b << " , c="<< c << std::endl;
+//     std::cout << "a > b: " << (a > b) << std::endl;    // Expected: true
+//     std::cout << "a < b: " << (a < b) << std::endl;    // Expected: false
+//     std::cout << "a >= c: " << (a >= c) << std::endl;  // Expected: true
+//     std::cout << "a <= c: " << (a <= c) << std::endl;  // Expected: true
+//     std::cout << "a == c: " << (a == c) << std::endl;  // Expected: true
+//     std::cout << "a != b: " << (a != b) << std::endl;  // Expected: true
+//     std::cout << "a != c: " << (a != c) << std::endl;  // Expected: true
+//     return 0;
+// }
+
+// int main() {
+//     Fixed a(10); // Integer constructor
+
+//     std::cout << "Initial value: " << a << std::endl; // Expected: 10
+//     std::cout << "Applied  operation: " << a-- << std::endl; // Expected: 10 (then increment to 11)
+//     std::cout << "After operation " << a << std::endl; // Expected: 11
+
 //     return 0;
 // }
 
 
+int main() {
+    Fixed a(42);
+    Fixed b = a;  // Copy constructor
+    Fixed c;
+    c = a;        // Assignment operator
 
-int main(void) {
-    // Basic arithmetic operations
-    {
-        std::cout << "\n=== Basic Arithmetic Tests ===\n";
-        Fixed a(4.5f);
-        Fixed b(2.0f);
-        
-        std::cout << "a = " << a << ", b = " << b << std::endl;
-        std::cout << "a + b = " << (a + b) << " (expected: 6.5)" << std::endl;
-        std::cout << "a - b = " << (a - b) << " (expected: 2.5)" << std::endl;
-        std::cout << "a * b = " << (a * b) << " (expected: 9.0)" << std::endl;
-        std::cout << "a / b = " << (a / b) << " (expected: 2.25)" << std::endl;
-    }
+    // Expected Results
+    // Original value: 42
+    // Copied value (b): 42
+    // Assigned value (c): 42
 
-    // Edge cases
-    {
-        std::cout << "\n=== Edge Cases ===\n";
-        Fixed zero(0);
-        Fixed one(1);
-        Fixed large(1234.5678f);
-        Fixed small(0.0039f);
-        
-        std::cout << "large = " << large << std::endl;
-        std::cout << "small = " << small << std::endl;
-        std::cout << "large * small = " << (large * small) << std::endl;
-        std::cout << "one / small = " << (one / small) << std::endl;
-        
-        // Test division by zero - should handle appropriately
-        std::cout << "Attempting division by zero:" << std::endl;
-        try {
-            std::cout << one / zero << std::endl;
-        } catch (const std::exception& e) {
-            std::cout << "Caught exception: " << e.what() << std::endl;
-        }
-    }
-
-    // Comparison operators
-    {
-        std::cout << "\n=== Comparison Tests ===\n";
-        Fixed a(3.14f);
-        Fixed b(3.14f);
-        Fixed c(2.718f);
-
-        std::cout << "a = " << a << ", b = " << b << ", c = " << c << std::endl;
-        std::cout << "a == b: " << (a == b) << " (expected: 1)" << std::endl;
-        std::cout << "a != c: " << (a != c) << " (expected: 1)" << std::endl;
-        std::cout << "a > c: " << (a > c) << " (expected: 1)" << std::endl;
-        std::cout << "c < a: " << (c < a) << " (expected: 1)" << std::endl;
-        std::cout << "a >= b: " << (a >= b) << " (expected: 1)" << std::endl;
-        std::cout << "c <= a: " << (c <= a) << " (expected: 1)" << std::endl;
-    }
-
-    // Increment/Decrement operators
-    // {
-    //     std::cout << "\n=== Increment/Decrement Tests ===\n";
-    //     Fixed a(5.5f);
-    //     std::cout << "Initial a = " << a << std::endl;
-        
-    //     std::cout << "++a = " << ++a << std::endl;
-    //     std::cout << "a = " << a << std::endl;
-    //     std::cout << "a++ = " << a++ << std::endl;
-    //     std::cout << "a = " << a << std::endl;
-        
-    //     std::cout << "--a = " << --a << std::endl;
-    //     std::cout << "a = " << a << std::endl;
-    //     std::cout << "a-- = " << a-- << std::endl;
-    //     std::cout << "a = " << a << std::endl;
-    // }
-
-    // Min/Max functions
-    {
-        std::cout << "\n=== Min/Max Tests ===\n";
-        Fixed a(15.1112f);
-        Fixed b(11.1111f);
-        
-        std::cout << "a = " << a << ", b = " << b << std::endl;
-        std::cout << "min(a,b) = " << Fixed::min(a, b) << std::endl;
-        std::cout << "max(a,b) = " << Fixed::max(a, b) << std::endl;
-        
-        // Test const versions
-        const Fixed c(20.5f);
-        const Fixed d(20.5f);
-        std::cout << "const min = " << Fixed::min(c, d) << std::endl;
-        std::cout << "const max = " << Fixed::max(c, d) << std::endl;
-    }
+    std::cout << "Original value: " << a << std::endl; // Expected: 42
+    std::cout << "Copied value (b): " << b << std::endl; // Expected: 42
+    std::cout << "Assigned value (c): " << c << std::endl; // Expected: 42
 
     return 0;
 }

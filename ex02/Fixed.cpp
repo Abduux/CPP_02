@@ -6,7 +6,7 @@
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:20:23 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/19 13:00:02 by ahraich          ###   ########.fr       */
+/*   Updated: 2024/12/19 21:37:09 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // copy constructor 
 Fixed::Fixed(const Fixed &other) { 
-    std::cout << "Copy constructor called" << std::endl;
+    //std::cout << "Copy constructor called" << std::endl;
 
     *this = other;
     //this->value = other.getRawBits();
@@ -23,7 +23,7 @@ Fixed::Fixed(const Fixed &other) {
 // copy assignment operator  
 Fixed& Fixed::operator=(const Fixed& other) 
 {
-    std::cout << "Copy assignment operator called " << std::endl;
+    //std::cout << "Copy assignment operator called " << std::endl;
     if(this != &other)
         this->value = other.getRawBits();
     return *this;
@@ -31,19 +31,19 @@ Fixed& Fixed::operator=(const Fixed& other)
 
 // Default constructor
 Fixed::Fixed(/* args */) : value(0){
-    std::cout << "Default constructor called" << std::endl;
+    //std::cout << "Default constructor called" << std::endl;
 }
 
 //Int constructor
 Fixed::Fixed(const int int_value) : value(int_value << this->fractional_bits) {// convert the int value to the fixed point representation 
-    std::cout << "Int constructor called" << std::endl;
+    //std::cout << "Int constructor called" << std::endl;
 }
 
 //Float constructor
 Fixed::Fixed(float float_point_value)  // convert the float-point value to the fixed point representation 
 {
-    std::cout << "Float constructor called" << std::endl;
-    this->value = (int)roundf(float_point_value * (1 << this->fractional_bits));
+    //std::cout << "Float constructor called" << std::endl;
+    this->value = roundf(float_point_value * (1 << this->fractional_bits));
 }
 
 // Default Destructor
@@ -103,14 +103,40 @@ Fixed Fixed::operator-(const Fixed &rhs) const
 
 Fixed Fixed::operator*(const Fixed &rhs) const
 {
-    Fixed tmp(this->toFloat() * rhs.toFloat());
-
+    Fixed tmp;
+    tmp.value = (static_cast<long long>(this->value) * rhs.value) >> this->fractional_bits;
     return tmp;
 }
 
 Fixed Fixed::operator/(const Fixed &rhs) const
 {
     Fixed tmp(this->toFloat() / rhs.toFloat());
-
     return tmp;
+}
+
+
+Fixed Fixed::operator++(int)
+{
+    Fixed tmp(*this);
+    this->value++;
+    return tmp;
+}
+
+Fixed Fixed::operator++()
+{
+    this->value++;
+    return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+    Fixed tmp(*this);
+    this->value--;
+    return tmp;
+}
+
+Fixed Fixed::operator--()
+{
+    this->value--;
+    return *this;
 }

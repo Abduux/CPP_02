@@ -6,7 +6,7 @@
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 05:02:03 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/19 12:48:15 by ahraich          ###   ########.fr       */
+/*   Updated: 2024/12/19 20:51:48 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ class Fixed
         int toInt(void) const;
 
         //• The 6 comparison operators
-        bool operator>(const Fixed &rhs) const;
-        bool operator<(const Fixed &rhs) const;
-        bool operator>=(const Fixed &rhs) const;
-        bool operator<=(const Fixed &rhs) const;
-        bool operator==(const Fixed &rhs) const;
-        bool operator!=(const Fixed &rhs) const;
+            bool operator>(const Fixed &rhs) const;
+            bool operator<(const Fixed &rhs) const;
+            bool operator>=(const Fixed &rhs) const;
+            bool operator<=(const Fixed &rhs) const;
+            bool operator==(const Fixed &rhs) const;
+            bool operator!=(const Fixed &rhs) const;
 
         //• The 4 arithmetic operators:
             Fixed operator+(const Fixed &rhs) const;
@@ -51,13 +51,13 @@ class Fixed
             Fixed operator*(const Fixed &rhs) const;
 
 
-        //The 4 increment/decrement operators
-            // Fixed operator++(int);
-            // Fixed operator++();
-            // Fixed operator--(int);
-            // Fixed operator--();
+        //• The 4 increment/decrement operators
+            Fixed operator++(int);
+            Fixed operator++();
+            Fixed operator--(int);
+            Fixed operator--();
 
-        //The min & max member functions 
+        //• The min & max static member functions 
             static Fixed& min(Fixed &f1, Fixed &f2);
             static const Fixed& min(const Fixed &f1,const Fixed &f2);
             static Fixed& max(Fixed &f1, Fixed &f2);
@@ -66,13 +66,6 @@ class Fixed
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
-
-
-
-
-
-
-
 
 
 
