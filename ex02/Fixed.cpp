@@ -6,7 +6,7 @@
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:20:23 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/19 21:37:09 by ahraich          ###   ########.fr       */
+/*   Updated: 2024/12/19 21:51:01 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Fixed::Fixed(float float_point_value)  // convert the float-point value to the f
 }
 
 // Default Destructor
-Fixed::~Fixed() {std::cout << "Destructor Called" << std::endl;}
+Fixed::~Fixed() {}
 
 // get Rawbits
 int Fixed::getRawBits() const {return value;}

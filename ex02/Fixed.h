@@ -6,7 +6,7 @@
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 05:02:03 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/19 20:51:48 by ahraich          ###   ########.fr       */
+/*   Updated: 2024/12/19 22:01:02 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,4 @@ class Fixed
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 
-
-
 #endif
-
-
-
-
-
-
-
-
-/*
-The 6 comparison operators: >, <, >=, <=, == and !=.
-
-
-
-• The 4 arithmetic operators: +, -, *, and /.
-• The 4 increment/decrement (pre-increment and post-increment, pre-decrement and post-decrement) operators,
- that will increase or decrease the fixed-point value from the smallest representable ε such as 1 + ε > 1.
-*/

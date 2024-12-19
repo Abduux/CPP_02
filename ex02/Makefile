@@ -6,7 +6,7 @@
 #    By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/18 05:19:10 by ahraich           #+#    #+#              #
-#    Updated: 2024/12/19 12:49:49 by ahraich          ###   ########.fr        #
+#    Updated: 2024/12/19 22:00:41 by ahraich          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ = $(SRC:.cpp=.o)
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Fixed
+NAME = Fixed02
 
 CPP = c++
 

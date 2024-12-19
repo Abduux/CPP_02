@@ -6,7 +6,7 @@
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:20:23 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/19 13:00:02 by ahraich          ###   ########.fr       */
+/*   Updated: 2024/12/19 21:52:35 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int Fixed::toInt() const
 float Fixed::toFloat() const 
 {
     float converted = (float)this->value / (1 << this->fractional_bits);
-    // std::cout << "value : " << 
     return converted;
 }
 

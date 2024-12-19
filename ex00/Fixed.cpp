@@ -6,18 +6,11 @@
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:19:43 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/19 11:40:07 by ahraich          ###   ########.fr       */
+/*   Updated: 2024/12/19 21:58:08 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.h"
-
-
-// copy constructor 
-Fixed::Fixed(const Fixed &other) { 
-    std::cout << "Copy constructor called" << std::endl;
-    this->value = other.getRawBits();
-} 
 
 
 // copy assignment operator  
@@ -29,6 +22,12 @@ Fixed& Fixed::operator=(const Fixed& other)
     return *this;
 }
 
+Fixed::Fixed(const Fixed &other) { 
+    std::cout << "Copy constructor called" << std::endl;
+
+    *this = other;
+    //this->value = other.getRawBits();
+} 
 
 // Default constructor
 Fixed::Fixed(/* args */) : value(0){
