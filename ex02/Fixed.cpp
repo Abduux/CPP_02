@@ -20,7 +20,6 @@ Fixed::Fixed(const Fixed &other) {
     //this->value = other.getRawBits();
 } 
 
-
 // copy assignment operator  
 Fixed& Fixed::operator=(const Fixed& other) 
 {
@@ -30,15 +29,13 @@ Fixed& Fixed::operator=(const Fixed& other)
     return *this;
 }
 
-
 // Default constructor
 Fixed::Fixed(/* args */) : value(0){
     std::cout << "Default constructor called" << std::endl;
 }
 
 //Int constructor
-Fixed::Fixed(const int int_value) : value(int_value << this->fractional_bits) // convert the int value to the fixed point representation 
-{
+Fixed::Fixed(const int int_value) : value(int_value << this->fractional_bits) {// convert the int value to the fixed point representation 
     std::cout << "Int constructor called" << std::endl;
 }
 
@@ -46,80 +43,74 @@ Fixed::Fixed(const int int_value) : value(int_value << this->fractional_bits) //
 Fixed::Fixed(float float_point_value)  // convert the float-point value to the fixed point representation 
 {
     std::cout << "Float constructor called" << std::endl;
-
     this->value = (int)roundf(float_point_value * (1 << this->fractional_bits));
 }
 
-
 // Default Destructor
-Fixed::~Fixed()
-{
-    std::cout << "Destructor Called" << std::endl;
-}
-
+Fixed::~Fixed() {std::cout << "Destructor Called" << std::endl;}
 
 // get Rawbits
-int Fixed::getRawBits() const 
-{
-    // std::cout << "getRawBits member function called" << std::endl;
-    return value;
-}
-
+int Fixed::getRawBits() const {return value;}
 
 // SetRaw bits 
-void Fixed::setRawBits(int const raw)
-{
-    this->value = raw;
-}
+void Fixed::setRawBits(int const raw)   {this->value = raw;}
 
+int Fixed::toInt() const    {return (this->value >> fractional_bits);}
 
-int Fixed::toInt() const
-{
-    return (this->value >> fractional_bits);
-}
+float Fixed::toFloat() const {return (float)this->value / (1 << this->fractional_bits);}
 
-
-float Fixed::toFloat() const 
-{
-    return (float)this->value / (1 << this->fractional_bits);
-}
-
-
-std::ostream& operator<<(std::ostream& outStream, const Fixed& fixed)
-{
-    outStream << fixed.toFloat();  // insert the float to the stream
-    return outStream;  // return the stream
-}
-
+std::ostream& operator<<(std::ostream& outStream, const Fixed& fixed)   {return (outStream << fixed.toFloat());}
 
 // operators overload ----------------------------------
 
-bool Fixed::operator>(const Fixed &rhs) const
+bool Fixed::operator>(const Fixed &rhs) const   {return (this->value > rhs.value);}
+
+bool Fixed::operator<(const Fixed &rhs) const   {return (this->value < rhs.value);}
+
+bool Fixed::operator>=(const Fixed &rhs) const  {return (this->value >= rhs.value);}
+
+bool Fixed::operator<=(const Fixed &rhs) const  {return (this->value <= rhs.value);}
+
+bool Fixed::operator==(const Fixed &rhs) const  {return (this->value == rhs.value);}
+
+bool Fixed::operator!=(const Fixed &rhs) const  {return (this->value != rhs.value);}
+
+
+Fixed& Fixed::min(Fixed &a, Fixed &b)                   {return (a < b ? a : b);}
+
+const Fixed& Fixed::min(const Fixed &a,const Fixed &b)  {return (a < b ? a : b);}
+
+Fixed& Fixed::max(Fixed &a, Fixed &b)                   {return (a > b ? a : b);}
+
+const Fixed& Fixed::max(const Fixed &a,const Fixed &b)  {return (a > b ? a : b);}
+
+
+Fixed Fixed::operator+(const Fixed &rhs) const
 {
-    return (this->value > rhs.value);
+    Fixed tmp;
+    tmp.value = this->value + rhs.value ;
+
+    return tmp;
 }
 
-bool Fixed::operator<(const Fixed &rhs) const 
+Fixed Fixed::operator-(const Fixed &rhs) const
 {
-    return (this->value < rhs.value);
+    Fixed tmp;
+    tmp.value = this->value - rhs.value ;
+
+    return tmp;
 }
 
-bool Fixed::operator>=(const Fixed &rhs) const
+Fixed Fixed::operator*(const Fixed &rhs) const
 {
-    return (this->value >= rhs.value);
+    Fixed tmp(this->toFloat() * rhs.toFloat());
+
+    return tmp;
 }
 
-bool Fixed::operator<=(const Fixed &rhs) const
+Fixed Fixed::operator/(const Fixed &rhs) const
 {
-    return (this->value <= rhs.value);
-}
+    Fixed tmp(this->toFloat() / rhs.toFloat());
 
-bool Fixed::operator==(const Fixed &rhs) const
-{
-    return (this->value == rhs.value);
-}
-
-bool Fixed::operator!=(const Fixed &rhs) const
-{
-    return (this->value != rhs.value);
+    return tmp;
 }

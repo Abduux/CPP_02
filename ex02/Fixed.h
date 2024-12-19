@@ -21,7 +21,7 @@ class Fixed
     private:
         /* data */
         int value;
-        static const int fractional_bits = 12;
+        static const int fractional_bits = 8;
     public:
         Fixed(/* args */); // default
         Fixed(const int int_value); // int constructor 
@@ -45,10 +45,10 @@ class Fixed
         bool operator!=(const Fixed &rhs) const;
 
         //• The 4 arithmetic operators:
-            // Fixed operator+(const Fixed &rhs) const;
-            // Fixed operator-(const Fixed &rhs) const;
-            // Fixed operator/(const Fixed &rhs) const;
-            // Fixed operator*(const Fixed &rhs) const;
+            Fixed operator+(const Fixed &rhs) const;
+            Fixed operator-(const Fixed &rhs) const;
+            Fixed operator/(const Fixed &rhs) const;
+            Fixed operator*(const Fixed &rhs) const;
 
 
         //The 4 increment/decrement operators
@@ -58,41 +58,32 @@ class Fixed
             // Fixed operator--();
 
         //The min & max member functions 
-            // static Fixed& min(Fixed &f1, Fixed &f2);
-            // static Fixed& min(const Fixed &f1,const Fixed &f2);
-            // static Fixed& max(Fixed &f1, Fixed &f2);
-            // static Fixed& max(const Fixed &f1,const Fixed &f2);
+            static Fixed& min(Fixed &f1, Fixed &f2);
+            static const Fixed& min(const Fixed &f1,const Fixed &f2);
+            static Fixed& max(Fixed &f1, Fixed &f2);
+            static const Fixed& max(const Fixed &f1,const Fixed &f2);
 
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
 
-//The 6 comparison operators
 
 
-//• The 6 comparison operators
 
-// Fixed Fixed::operator+(const Fixed &rhs) const
-// {
-//     return true;
-// }
 
-// Fixed Fixed::operator-(const Fixed &rhs) const
-// {
-//     return true;
-// }
 
-// Fixed Fixed::operator/(const Fixed &rhs) const
-// {
-//     return true;
-// }
 
-// Fixed Fixed::operator*(const Fixed &rhs) const
-// {
-//     return true;
-// }
+
+
 
 #endif
+
+
+
+
+
+
+
 
 /*
 The 6 comparison operators: >, <, >=, <=, == and !=.
