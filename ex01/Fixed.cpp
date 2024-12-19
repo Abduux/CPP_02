@@ -6,7 +6,7 @@
 /*   By: ahraich <ahraich@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 09:20:23 by ahraich           #+#    #+#             */
-/*   Updated: 2024/12/19 12:40:30 by ahraich          ###   ########.fr       */
+/*   Updated: 2024/12/19 13:00:02 by ahraich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 // copy constructor 
 Fixed::Fixed(const Fixed &other) { 
     std::cout << "Copy constructor called" << std::endl;
-    this->value = other.getRawBits();
+
+    
+    //this->value = other.getRawBits();
 } 
 
 
@@ -23,8 +25,9 @@ Fixed::Fixed(const Fixed &other) {
 Fixed& Fixed::operator=(const Fixed& other) 
 {
     std::cout << "Copy assignment operator called " << std::endl;
-    if(this != &other)
-        this->value = other.getRawBits();
+    
+    
+    this->value = other.getRawBits();
     return *this;
 }
 
@@ -36,12 +39,12 @@ Fixed::Fixed(/* args */) : value(0){
 
 Fixed::Fixed(const int int_value) : value(int_value << this->fractional_bits) // convert the int value to the fixed point representation 
 {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(float float_point_value)  // convert the float-point value to the fixed point representation 
 {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "Float constructor called" << std::endl;
 
     this->value = (int)roundf(float_point_value * (1 << this->fractional_bits));
 }
@@ -77,13 +80,14 @@ int Fixed::toInt() const
 
 float Fixed::toFloat() const 
 {
-    return static_cast<float>(this->value / (1 << this->fractional_bits));
+    return (float)(this->value / (1 << this->fractional_bits));
 }
 
 
-std::ostream& operator<<(std::ostream& out, const Fixed& fixed) {
-    out << fixed.toFloat();  // Insert the floating-point value into the stream
-    return out;              // Return the stream for chaining
+std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
+{
+    out << fixed.toFloat();  // insert the float to the stream
+    return out;  // return the stream
 }
 
 
