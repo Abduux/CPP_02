@@ -81,7 +81,7 @@ int Fixed::toInt() const
 
 float Fixed::toFloat() const 
 {
-    float converted = (float)this->value) / (1 << this->fractional_bits);
+    float converted = (float)this->value / (1 << this->fractional_bits);
     // std::cout << "value : " << 
     return converted;
 }
